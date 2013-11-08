@@ -11,15 +11,14 @@ import br.com.synchro.appref.business.repository.BlogRepository
  * Time: 6:51 PM
  * To change this template use File | Settings | File Templates.
  */
-class BlogRepositoryMongo extends BaseRepositoryMongo<BlogMongo> implements BlogRepository{
+class BlogRepositoryMongo extends BaseRepositoryMongo<Blog> implements BlogRepository{
 
-    BlogRepositoryMongo(final Class<BlogMongo> clazz){
+    BlogRepositoryMongo(final Class<Blog> clazz){
         super(clazz)
     }
 
     @Override
-    Set<Blog> findByAuthor(Person pAuthor) {
-        sa
-        return null  //To change body of implemented methods use File | Settings | File Templates.
+    Set<Blog> withAuthor(Person pAuthor) {
+        Blog.findAllByAuthor(pAuthor)
     }
 }

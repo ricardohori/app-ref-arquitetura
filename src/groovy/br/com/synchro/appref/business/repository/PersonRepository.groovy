@@ -9,8 +9,8 @@ import br.com.synchro.appref.business.model.Person
  * Time: 6:42 PM
  * To change this template use File | Settings | File Templates.
  */
-interface PersonRepository {
+interface PersonRepository extends BaseAppRefRepository<Person>{
 
-    Person findByName(final String pName)
+    Person whosNameIs(final String pName)
 
 }

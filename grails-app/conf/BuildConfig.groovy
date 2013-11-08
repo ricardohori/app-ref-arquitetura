@@ -37,6 +37,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        compile 'com.google.guava:guava:15.0'
+        compile 'com.google.code.gson:gson:2.2.4'
     }
 
     plugins {
@@ -54,5 +56,7 @@ grails.project.dependency.resolution = {
         compile ":syn-framework:1.1.0-SNAPSHOT"
 
         compile ':cache:1.0.1'
+
+        test ':spock:0.7'
     }
 }
