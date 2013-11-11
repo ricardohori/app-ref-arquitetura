@@ -2,7 +2,6 @@ package br.com.synchro.appref.business.service
 
 import br.com.synchro.appref.business.model.Person
 import br.com.synchro.appref.business.repository.BlogRepository
-import br.com.synchro.appref.business.service.assembler.BlogAssembler
 import br.com.synchro.appref.business.service.to.BlogTO
 import com.google.common.collect.ImmutableSet
 
@@ -16,15 +15,12 @@ import com.google.common.collect.ImmutableSet
 class BlogService {
 
     private final BlogRepository blogRepository
-    private final BlogAssembler blogAssembler
 
-    BlogService(final BlogAssembler pBlogAssembler, final BlogRepository pBlogRepository){
+    BlogService(final BlogRepository pBlogRepository){
         blogRepository = pBlogRepository
-        blogAssembler = pBlogAssembler
     }
 
     void createNewBlog(final BlogTO pBlog){
-        final blog = blogAssembler.dismantle(pBlog)
         blogRepository.save(pBlog)
     }
 

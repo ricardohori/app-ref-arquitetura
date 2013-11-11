@@ -2,8 +2,6 @@ package br.com.synchro.appref.gateway.test
 
 import br.com.synchro.appref.business.repository.BlogRepository
 import br.com.synchro.appref.business.repository.PersonRepository
-import br.com.synchro.appref.business.service.assembler.BlogAssembler
-import br.com.synchro.appref.business.service.assembler.PersonAssembler
 import br.com.synchro.appref.gateway.data.BlogRepositoryMongo
 import br.com.synchro.appref.gateway.data.PersonRepositoryMongo
 
@@ -22,15 +20,6 @@ class UnitBeans {
         beans << [(BlogRepository): new BlogRepositoryMongo()]
 
         beans << [(PersonRepository): new PersonRepositoryMongo()]
-
-        beans << [(PersonAssembler): new PersonAssembler(
-                findBean(PersonRepository)
-        )]
-
-        beans << [(BlogAssembler): new BlogAssembler(
-                findBean(PersonAssembler),
-                findBean(BlogRepository)
-        )]
 
     }
 
