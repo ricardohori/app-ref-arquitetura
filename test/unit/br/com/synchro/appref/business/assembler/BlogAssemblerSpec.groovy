@@ -1,10 +1,12 @@
 package br.com.synchro.appref.business.assembler
 
-import br.com.synchro.appref.gateway.test.AppRefUnitSpec
 import br.com.synchro.appref.business.model.Blog
 import br.com.synchro.appref.business.model.Person
 import br.com.synchro.appref.business.model.Post
-import br.com.synchro.appref.business.service.assembler.BlogAssembler
+import br.com.synchro.appref.business.service.assembler.BlogDiffTOMapper
+import br.com.synchro.appref.business.service.assembler.DomainTOAssembler
+import br.com.synchro.appref.business.service.to.BlogDiffTO
+import br.com.synchro.appref.gateway.test.AppRefUnitSpec
 
 /**
  * <pre>
@@ -15,7 +17,7 @@ import br.com.synchro.appref.business.service.assembler.BlogAssembler
  */
 class BlogAssemblerSpec extends AppRefUnitSpec{
 
-    final blogAssembler = getUnitBean(BlogAssembler)
+    final assembler = new DomainTOAssembler()
 
     def "Must be able to assemble a blog TO from a blog domain"(){
         setup:
@@ -33,7 +35,7 @@ class BlogAssemblerSpec extends AppRefUnitSpec{
             )
 
         when:
-        final to = blogAssembler.assemble(blog)
+        final to = assembler.from(blog).with(BlogDiffTOMapper).to(BlogDiffTO)
 
         then:
         true

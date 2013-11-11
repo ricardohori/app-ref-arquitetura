@@ -9,7 +9,7 @@ import com.google.gson.Gson
  *
  * </pre>
  */
-class JsonTOConverter implements IJsonTOConverter{
+class JsonTOConverter{
 
     private final Gson gsonInstance
 
@@ -17,13 +17,24 @@ class JsonTOConverter implements IJsonTOConverter{
         gsonInstance = new Gson()
     }
 
-    @Override
-    public <T> T fromJson(String pJson, Class<T> clazz) {
-        gsonInstance.fromJson(pJson, clazz)
+    JsonToTO from(final String pJson){
+        new JsonToTO(pJson)
     }
 
-    @Override
-    public <T> String toJson(T pTO) {
-        gsonInstance.toJson(pTO)
+    String from(final Object pObject){
+        gsonInstance.toJson(pObject)
+    }
+
+    private class JsonToTO {
+
+        private final String json
+
+        JsonToTO(final String pJson){
+            json = pJson
+        }
+
+        public <T> T to(Class<T> pClazz){
+           gsonInstance.fromJson(json, pClazz)
+        }
     }
 }

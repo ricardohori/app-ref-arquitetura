@@ -43,9 +43,9 @@ class BlogConverterSpec extends AppRefUnitSpec{
         ])
 
         when:
-        final blogTO = converter.fromJson(blogJson, BlogTO)
+        final blogTO = converter.from(blogJson).to(BlogTO)
 
         then:
-        converter.toJson(blogTO)
+        converter.from(blogTO)
     }
 }
